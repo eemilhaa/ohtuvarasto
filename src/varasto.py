@@ -1,11 +1,6 @@
 class Varasto:
     def __init__(self, tilavuus, alku_saldo=0):
-        if tilavuus > 0.0:
-            self.tilavuus = tilavuus
-        else:
-            # virheellinen, nollataan
-            self.tilavuus = 0.0
-
+        self.tilavuus = max(tilavuus, 0.0)
         if alku_saldo < 0.0:
             # virheellinen, nollataan
             self.saldo = 0.0
@@ -20,34 +15,6 @@ class Varasto:
     # tilaa tms.
     def paljonko_mahtuu(self):
         return self.tilavuus - self.saldo
-
-    def worst_possible_paljonko_mahtuu_method_to_break_all_pylint_rules_this_line_is_too_long(self):
-        if self.tilavuus:
-            if self.saldo:
-                if True:
-                    if not False:
-                        tilavuus = self.tilavuus
-                        saldo = self.saldo
-                        total_tilavuus = 0
-                        total_saldo = 0
-                        for i in range(tilavuus):
-                            total_tilavuus += 1
-                        for i in range(saldo):
-                            total_saldo += 1
-                        difference = total_tilavuus - total_saldo
-                        difference_2 = self.tilavuus - self.saldo
-                        if difference == self.tilavuus - self.saldo:
-                            return difference
-                        else:
-                            print()
-                    else:
-                        print()
-                else:
-                    print()
-            else:
-                print()
-        else:
-            print()
 
     def lisaa_varastoon(self, maara):
         if maara < 0:
